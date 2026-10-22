@@ -1,0 +1,90 @@
+# Mini Challenge 1:
+
+for number in range(1, 11):
+    print(number)
+
+# Mini Challenge 2:
+
+for number in range(1, 16, 2):
+    print(number)
+
+# Mini Challenge 3:
+
+for number in range(10, 0, -1):
+    print(number)
+
+# Task 1:
+
+def get_sum(limit):
+    total = 0
+
+    for number in range(0, limit + 1):
+        total += number
+
+    return total
+
+
+print(get_sum(0))
+print(get_sum(4))
+
+# Task 2:
+
+def check_password(correct_password):
+    while True:
+        attempt = input("Enter the demo password: ")
+
+        if attempt == "":
+            print("Password cannot be blank.")
+            continue
+
+        if attempt == correct_password:
+            print("Access granted!")
+            break
+
+        print("Incorrect password. Try again.")
+
+    return True
+
+
+check_password("python8")
+
+# Task 3:
+
+def display_pattern(rows, columns):
+    for row in range(rows):
+        for column in range(columns):
+            print("*", end="")
+        print()
+
+display_pattern(7, 4)
+
+# Task 4:
+
+def skip_multiples(limit):
+    for number in range(1, limit + 1):
+        if number % 3 == 0:
+            continue
+        print(number)
+
+
+skip_multiples(15)
+
+# Extension:
+
+def skip_multiples_of_three_and_five(limit):
+    for number in range(1, limit + 1):
+        if number % 3 == 0 or number % 5 == 0:
+            continue
+        print(number)
+
+
+skip_multiples_of_three_and_five(20)
+
+
+
+Reflection:
+Question: Which loop structure is easiest for you to understand so far, and what is one question you stil have?
+
+Answer: For me, the most understandable and easiest loop structure is the for loop. It is easy for me 
+because it just repeats instructions for a specific range of numbers. A question I still have is when to appropriately use a for loop
+instead of a while loop.

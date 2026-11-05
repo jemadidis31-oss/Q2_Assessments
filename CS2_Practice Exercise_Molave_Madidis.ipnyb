@@ -1,0 +1,285 @@
+# Personal Savings Tracker Scenario Code
+
+# Function to update the current savings
+def update_savings(current_total, deposit):
+    return current_total + deposit
+
+# Function to check if the savings goal is reached
+def check_goal(total, target):
+    if total >= target:
+        return "Goal reached!"
+    else:
+        return "Keep saving!"
+
+# Initialize the total savings
+total = 0
+
+# Ask the user for the savings target
+target = float(input("Enter savings target: "))
+
+# Ask for the first deposit
+deposit = float(input("Enter deposit (0 to finish): "))
+
+# Continue accepting deposits until the user enters 0
+while deposit != 0:
+
+    # Update the total savings using the function
+    total = update_savings(total, deposit)
+
+    # Display the updated savings
+    print("Updated savings: {:.2f}".format(total))
+
+    # Ask for the next deposit 
+    deposit = float(input("Enter deposit (0 to finish): "))
+
+# Display the final savings
+print("\nTotal savings: {:.2f}".format(total))
+
+# Calculate and display the remaining amount if needed
+if total < target:
+    remaining = target - total 
+    print("Remaining amount: {:.2f}".format(remaining))
+
+# Check and display the savings goal status 
+status = check_goal(total, target)
+print(status)
+
+
+
+
+# Classroom Energy Usage Analyzer Scenario Code
+
+# Function to calculate energy comsumption in kWh 
+def calculate_energy(power_watts, hours_used):
+    return (power_watts * hours_used) / 1000
+
+# Function to classify energy consumption
+def classify_usage(energy):
+    if energy < 0.5:
+        return "Low"
+    elif energy <= 2.0:
+        return "Moderate"
+    else:
+        return "High"
+
+# Initialize the total and highest energy consumption
+total_energy = 0
+highest_energy = 0
+highest_device = ""
+
+# Ask how many devices will be recorded 
+devices = int(input("How many devices? "))
+
+# Repeat the process for each device
+for i in range(devices):
+
+    print("\nDevice", i + 1)
+
+    # Ask for the device information
+    name = input("Device name: ")
+    power = float(input("Power rating (watts): "))
+    hours = float(input("Hours used: "))
+
+    # Calculate the energy consumption
+    energy = calculate_energy(power, hours)
+
+    # Classify the energy consumption
+    classification = classify_usage(energy)
+
+    # Display the results for the device
+    print("Energy consumption: {:.2f} kWh".format(energy))
+    print("Classification: ", classification)
+
+    # Add the energy consumption to the total
+    total_energy = total_energy + energy
+
+    # Check if this device has the highest consumption
+    if energy > highest_energy:
+        highest_energy = energy
+        highest_device = name
+
+# Display the final results
+print("\nTotal energy consumption: {:.2f} kWh".format(total_energy))
+print("Highest consuming device: ", highest_device)
+
+
+
+
+# Water Refilling Station Sales Tracker Scenario Code
+
+# Function to calculate the sale of one transaction
+def calculate_sale(quantity, price_per_container):
+    return quantity * price_per_container
+
+# Function to calculate the 5% discount
+def calculate_discount(total):
+    if total >= 500:
+        return total * 0.05
+    else:
+        return 0
+
+# Initialize the total sales and discounts
+total_sales = 0
+total_discounts = 0
+
+# Ask for the price per container
+price = float(input("Price per container: "))
+
+# Ask for the first transaction quantity
+quantity = int(input("Enter quantity sold (0 to finish): "))
+
+# Continue accepting transactions until quantity is 0
+while quantity != 0:
+
+    # Calculate the original sale
+    sale = calculate_sale(quantity, price)
+
+    # Calculate the discount
+    discount = calculate_discount(sale)
+
+    # Calculate the final amount to pay
+    amount_due = sale - discount
+
+    # Display the transaction details
+    print("Sale: ₱{:.2f}".format(sale))
+    print("Discount: ₱{:.2f}".format(discount))
+    print("Amount due: ₱{:.2f}".format(amount_due))
+
+    # Add the sale and discount to their respective totals
+    total_sales = total_sales + sale
+    total_discounts = total_discounts + discount
+
+    # Ask for the next transaction quantity
+    quantity = int(input("\nEnter quantity sold (0 to finish): "))
+
+# Calculate the net sales
+net_sales = total_sales - total_discounts
+
+# Display the final sales summary
+print("\nTotal sales before discounts: ₱{:.2f}".format(total_sales))
+print("Total discounts: ₱{:.2f}".format(total_discounts))
+print("Net sales: ₱{:.2f}".format(net_sales))
+
+
+
+
+# Reading Time and Progress Analyzer Scenario Code
+
+# Function to calculate reading speed
+def calculate_reading_speed(pages, minutes):
+    if minutes == 0:
+        return 0
+    else:
+        return pages / minutes
+
+# Function to classify reading speed
+def classify_speed(speed):
+    if speed < 1:
+        return "Developing"
+    elif speed <= 2:
+        return "Steady"
+    else:
+        return "Fast"
+
+# Initialize the total pages and reading time
+total_pages = 0
+total_minutes = 0
+
+# Ask how many reading sessions will be recorded
+sessions = int(input("How many reading sessions? "))
+
+# Repeat the process for each reading session
+for i in range(sessions):
+
+    print("\nSession", i + 1)
+
+    # Ask for the pages read and minutes spent
+    pages = int(input("Pages read: "))
+    minutes = float(input("Minutes spent: "))
+
+    # Calculate the reading speed
+    speed = calculate_reading_speed(pages, minutes)
+
+    # Classify the reading speed
+    classification = classify_speed(speed)
+
+    # Display the session results
+    print("Reading speed: {:.2f} pages/minute".format(speed))
+    print("Classification:", classification)
+
+    # Add the pages and minutes to their respective totals
+    total_pages = total_pages + pages
+    total_minutes = total_minutes + minutes
+
+# Calculate the overall reading speed
+overall_speed = calculate_reading_speed(total_pages, total_minutes)
+
+# Display the final reading summary
+print("\nTotal pages read:", total_pages)
+print("Total reading time:", total_minutes, "minutes")
+print("Overall reading speed: {:.2f} pages/minute".format(overall_speed))
+
+
+
+
+# School Event Attendance Monitor Scenario Code 
+
+# Function to calculate the attendance percentage
+def calculate_attendance_rate(attendees, expected):
+    if expected == 0:
+        return 0
+    else:
+        return (attendees / expected) * 100
+
+# Function to classify attendance
+def classify_attendance(rate):
+    if rate < 60:
+        return "Low"
+    elif rate < 90:
+        return "Moderate"
+    else:
+        return "High"
+
+# Initialize the total attendees, expected attendance, and high sessions
+total_attendees = 0
+total_expected = 0
+high_sessions = 0
+
+# Ask how many sessions will be monitored
+sessions = int(input("How many sessions? "))
+
+# Repeat the process for every session
+for i in range(sessions):
+
+    print("\nSession", i + 1)
+
+    # Ask for the expected and actual attendance
+    expected = int(input("Expected attendance: "))
+    attendees = int(input("Actual attendees: "))
+
+    # Calculate the attendance rate
+    rate = calculate_attendance_rate(attendees, expected)
+
+    # Classify the attendance rate
+    classification = classify_attendance(rate)
+
+    # Display the session results
+    print("Attendance rate: {:.2f}%".format(rate))
+    print("Classification:", classification)
+
+    # Add the attendance figures to their respective totals
+    total_attendees = total_attendees + attendees
+    total_expected = total_expected + expected
+
+    # Count sessions with high attendance
+    if classification == "High":
+        high_sessions = high_sessions + 1
+
+# Calculate the overall attendance rate
+overall_rate = calculate_attendance_rate(total_attendees, total_expected)
+
+# Display the final attendance summary
+print("\nTotal attendees:", total_attendees)
+print("Total expected attendance:", total_expected)
+print("Overall attendance rate: {:.2f}%".format(overall_rate))
+print("High-attendance sessions:", high_sessions)
